@@ -12,9 +12,18 @@ const UserSchema = new mongoose.Schema(
       type: String,
       unique: true,
     },
-    age: {
-      type: Number,
+    password: {
+      type: String,
+    },
+    role: {
+      type: ["user", "admin"],
+      default: "user",
     },
   },
-  {}
+  {
+    timestamps: true, //TODO createdAt, updatedAt
+    versionKey: false,
+  }
 );
+
+module.exports = mongoose.model("users", UserSchema);
